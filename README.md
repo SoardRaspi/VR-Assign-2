@@ -22,6 +22,7 @@ The code was ran on google colab, to run it on a local system do the following:
 -  Instead of ```train_folder = '/content/MSFD/1/face_crop'``` and   ```
 test_folder = '/content/MSFD/1/face_crop_segmentation'``` replace them with our own paths for face_crop and face_crop_segmentation folders and run the rest
 of the cells as usual.
+-  Run the rest as usual
 <br/>
 To run it on Colab, replace ```zip_path = '/content/drive/MyDrive/Colab Notebooks/MSFD.zip'``` with the actual path to the zip file in your drive
 
