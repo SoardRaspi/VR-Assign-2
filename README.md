@@ -138,7 +138,15 @@ The U-Net model is designed for precise segmentation of mask regions in images. 
 
 -   All the hyperparameters for the model training and definitions are defined in the config.py python script. This helps in simplified access and updates of the parameters in a single place. This file is accessed in multiple files related to model definition, training and inference.
 
-### 4.3 Inference
+### 4.3 Results
+
+After the model is trained following the aforementioned parameters, we evaluate the model on the full dataset. We use the metrics used for Task 3: IoU and Dice score. The best scores we achieved for the model are:
+
+-   Average IoU: 0.6653
+-   Average Dice Score: 0.7832
+-   Average Accuracy: 0.8624
+
+### 4.4 Inference
 
 During the inference of the model, the trained model is given as input the image path. The image is read using the input image path. All the image reading and transformations on the image are done using opencv’s in-built functions and with simplified array interaction using numpy. For each of the input images, two scoring metrics are used to evaluate the model’s performance. These are the IoU and Dice loss functions. These are also plotted for better visualization. All of the functions required for the calculation are clearly defined in the prediction.py python script.
 
