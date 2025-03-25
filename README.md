@@ -71,44 +71,48 @@ Table 1: Summarization of the results of model training with varying hyper-param
 
 based on the calculated F1 scores to determine the best model. It can be clearly seen from the table in Task 2 and from the confusion matrices from Task 1 that the NN model with the CNN layers and then the FFN is better at classifying the input images.
 
-## Task 3
+## **Task 3: Region-Based Segmentation Using Otsu’s Method**
 
-### 3.1 Implementation of a Region-Based Segmentation Method
+### **Overview**
+This task implements a **region-based segmentation method** using **Otsu’s thresholding** and evaluates its performance using **Intersection over Union (IoU)** and **Dice Score**. The method is applied to a dataset where segmentation masks are compared against ground truth labels.
 
-Region Segmentation Using Traditional Techniques To segment mask regions for faces labeled as ”with mask,” we employ HSV-based thresholding, a widely used region-based segmentation approach. The method converts the input image from RGB to HSV color space, allowing more effective segmentation by focusing on hue, saturation, and value levels rather than raw RGB intensity.
+### **Methodology**
 
-We systematically search for optimal threshold values by iterating over a predefined range of hue (H), saturation (S), and value (V). This exhaustive search ensures that the segmentation performance is maximized by minimizing the Mean Squared Error (MSE) between the generated mask and the ground truth segmentation.
+#### **1. Data Preparation**
+- The dataset consists of images stored in two folders:  
+  - `train_folder` contains original images.  
+  - `test_folder` contains corresponding ground truth segmentation masks.  
 
-The workflow for the segmentation method is as follows:
+#### **2. Otsu’s Thresholding for Segmentation**
+- Each grayscale image undergoes **Otsu’s thresholding**, which determines an optimal threshold by minimizing intra-class variance.  
+- Pixels above the threshold are classified as foreground, while those below are background.  
 
-1.  Convert the input image to HSV color space.
-2.  Define lower and upper bounds for HSV values that represent the masked region.
-3.  Use cv2.inRange() to generate a binary mask, where pixels within the threshold range are marked as foreground (mask region) and others as background.
-4.  Compare the segmented mask with the ground truth using MSE to evaluate segmentation performance.
+#### **3. Performance Evaluation**
+Segmentation results are compared against the ground truth masks using:  
+- **Intersection over Union (IoU):** Measures the overlap between the predicted and actual segmentation masks.  
+- **Dice Score (F1 Score for segmentation):** Evaluates the similarity between the segmented output and the ground truth.  
 
-### 3.2 Visualization and Evaluation of Segmentation Results
+### **Implementation Details**
+- The script iterates over images in `train_folder`, applies Otsu's method, and compares results with corresponding ground truth masks in `test_folder`.  
+- IoU and Dice Score are computed for each image, and average values are reported.  
+- If no matching ground truth is found, the count of unmatched images is displayed.  
 
-The segmentation results are visualized by overlaying the generated binary mask onto the original image. This allows a qualitative assessment of whether the segmentation method correctly identifies the masked regions.
+### **Results**
+- **Average IoU and Dice scores** quantify segmentation performance.  
+- The number of **unmatched images** provides insight into dataset inconsistencies.  
 
-For quantitative evaluation, we compute the Mean Squared Error (MSE) between the predicted mask and the ground truth segmentation mask. MSE is calculated using the following equation:
+### **Usage**
+To run the script, ensure the dataset folders are correctly specified and contain corresponding images. The output provides:  
+```
+IoU for Otsu thresholding: <value>
+Dice for Otsu thresholding: <value>
+Unmatched images: <count>
+```
 
-MSE = 1/N * Σ(Mi − Gi)^2
+### **Conclusion**
+Otsu’s method offers a simple and efficient thresholding technique for image segmentation. The reported IoU and Dice scores highlight its effectiveness in separating foreground and background regions.
 
-where:
 
--   Mi is the pixel value in the predicted mask,
--   Gi is the corresponding pixel value in the ground truth mask,
--   N is the total number of pixels.
-
-The optimal threshold values are determined based on the lowest observed MSE, ensuring the best segmentation accuracy.
-
-The final output includes:
-
--   Best HSV threshold values identified through optimization.
--   MSE score, indicating segmentation accuracy.
--   Visualizations of segmented images for qualitative assessment.
-
-By employing HSV thresholding, this method provides an efficient and traditional alternative to deep-learning-based segmentation, particularly in scenarios where computational resources are limited.
 
 ## Task 4 Mask Segmentation Using U-Net.
 
@@ -134,14 +138,27 @@ The U-Net model is designed for precise segmentation of mask regions in images. 
 
 -   All the hyperparameters for the model training and definitions are defined in the config.py python script. This helps in simplified access and updates of the parameters in a single place. This file is accessed in multiple files related to model definition, training and inference.
 
-### 4.3 Inference
+### 4.3 Results
+
+After the model is trained following the aforementioned parameters, we evaluate the model on the full dataset. We use the metrics used for Task 3: IoU and Dice score. The best scores we achieved for the model are:
+
+-   Average IoU: 66.53%
+-   Average Dice Score: 78.32%
+-   Average Accuracy: 86.24%
+
+This is a significant improvement over the classical methods as it achieved an IoU of only 0.299
+### 4.4 Inference
 
 During the inference of the model, the trained model is given as input the image path. The image is read using the input image path. All the image reading and transformations on the image are done using opencv’s in-built functions and with simplified array interaction using numpy. For each of the input images, two scoring metrics are used to evaluate the model’s performance. These are the IoU and Dice loss functions. These are also plotted for better visualization. All of the functions required for the calculation are clearly defined in the prediction.py python script.
 
 
 ## Exceution Steps
+### Task1
+- Replace ```data_dir = "/Users/soardr/Desktop/VR Assign 2/data"``` with the required dataset path
+- Run the rest as usual
 ### Task2
 - Run the cell containing ```model = models.load_model("/content/mask_detection_model_small.h5")``` only to load an existing model and replace the argument with the required path.
+- In the train and validation generator replace ```'Face-Mask-Detection/dataset/'`` with the path to the dataset.
 - Run the rest as usual
 
 ### Task3
