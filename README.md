@@ -140,7 +140,7 @@ The U-Net model is designed for precise segmentation of mask regions in images. 
 
 ### 4.3 Results
 
-After the model is trained following the aforementioned parameters, we evaluate the model on the full dataset. We use the metrics used for Task 3: IoU and Dice score. The best scores we achieved for the model are:
+During the training of the model, we tried different hyper-parameters. Among the multiple combinations we tried, the combination of learning rate 0.001, 40 epochs and batch size 64 yielded the best results. After the model is trained following the aforementioned parameters, we evaluate the model on the full dataset. We use the metrics used for Task 3: IoU and Dice score. The best scores we achieved for the model are:
 
 -   Average IoU: 66.53%
 -   Average Dice Score: 78.32%
