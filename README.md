@@ -145,6 +145,7 @@ During the inference of the model, the trained model is given as input the image
 - Run the rest as usual
 ### Task2
 - Run the cell containing ```model = models.load_model("/content/mask_detection_model_small.h5")``` only to load an existing model and replace the argument with the required path.
+- In the train and validation generator replace ```'Face-Mask-Detection/dataset/'`` with the path to the dataset.
 - Run the rest as usual
 
 ### Task3
