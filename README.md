@@ -140,6 +140,9 @@ During the inference of the model, the trained model is given as input the image
 
 
 ## Exceution Steps
+### Task1
+- Replace ```data_dir = "/Users/soardr/Desktop/VR Assign 2/data"``` with the required dataset path
+- Run the rest as usual
 ### Task2
 - Run the cell containing ```model = models.load_model("/content/mask_detection_model_small.h5")``` only to load an existing model and replace the argument with the required path.
 - Run the rest as usual
