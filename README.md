@@ -29,7 +29,7 @@ For this task, we consider two types of features; Histogram of Oriented Gradient
 
 -   Like the SVM Classifier, a Multi-Layer Perceptron (MLP) model with two hidden layers is used. These hidden layers have 128 and 64 number of neurons. This model trains for a maximum of 500 epochs or lesser if convergence is achieved earlier. The same train-test split is used for training and evaluating the model.
 
-![Figure 1: Confusion matrix representing the results of MLP classifier on HoG features](link_to_figure_1)
+![Figure 1: Confusion matrix representing the results of MLP classifier on HoG features](https://github.com/SoardRaspi/VR_Project1_AaryanDev_IMT2022038/blob/main/images/MLP%20Conf%20Matrix%20Canny.png)
 ![Figure 2: Confusion matrix representing the results of MLP classifier on Canny edge features](link_to_figure_2)
 ![Figure 3: Confusion matrix representing the results of SVM classifier on HoG features](link_to_figure_3)
 ![Figure 4: Confusion matrix representing the results of SVM classifier on Canny edge features](link_to_figure_4)
