@@ -146,6 +146,7 @@ After the model is trained following the aforementioned parameters, we evaluate 
 -   Average Dice Score: 78.32%
 -   Average Accuracy: 86.24%
 
+This is a significant improvement over the classical methods as it achieved an IoU of only 0.299
 ### 4.4 Inference
 
 During the inference of the model, the trained model is given as input the image path. The image is read using the input image path. All the image reading and transformations on the image are done using opencv’s in-built functions and with simplified array interaction using numpy. For each of the input images, two scoring metrics are used to evaluate the model’s performance. These are the IoU and Dice loss functions. These are also plotted for better visualization. All of the functions required for the calculation are clearly defined in the prediction.py python script.
