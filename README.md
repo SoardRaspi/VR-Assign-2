@@ -1,4 +1,4 @@
-# Visual Recognition: Coin Counting and Image Stitching
+# Visual Recognition: Binary Classification and Mask segmentation
 
 **Aaryan Dev, Shashank Devarmani, Soham Pawar**  
 **March 25, 2025**
